@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/travel-checklist/(.*)",
-      "destination": "/travel-checklist/index.html"
+      "destination": "/index.html"
     },
     {
       "source": "/travel-checklist",
-      "destination": "/travel-checklist/index.html"
+      "destination": "/index.html"
     }
   ]
 }

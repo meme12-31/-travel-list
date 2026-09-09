@@ -1,18 +1,7 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/travel-checklist",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/travel-checklist/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/travel-checklist", "destination": "/index.html" },
+    { "source": "/travel-checklist/(.*)", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

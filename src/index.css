@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   持ち物チェックリストチェッカー — グローバルスタイル
+   パステル調・ポップで可愛いトーン / モバイルファースト
+   ============================================================ */
+
+@theme {
+  --font-sans: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Segoe UI',
+    system-ui, Meiryo, sans-serif;
+
+  /* パステルカラーパレット */
+  --color-sky-soft: #7cc4f0;
+  --color-mint-soft: #7fd6b3;
+  --color-pink-soft: #ff9ec4;
+  --color-orange-soft: #ffb877;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  color: #4a4a55;
+  background: linear-gradient(160deg, #eaf6ff 0%, #f3fbf6 50%, #fff2f8 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* テキストの折り返し（長いアイテム名でも横スクロールを防ぐ） */
+* {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* プログレスバーの滑らかなアニメーション */
+.progress-fill {
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* モーダル・トーストのふわっと登場 */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-pop-in {
+  animation: pop-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-toast-in {
+  animation: toast-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 100%達成スタンプのぽよんアニメーション */
+@keyframes stamp-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-12deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+.animate-stamp {
+  animation: stamp-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill,
+  .animate-pop-in,
+  .animate-toast-in,
+  .animate-stamp {
+    animation: none !important;
+    transition: none !important;
+  }
+}

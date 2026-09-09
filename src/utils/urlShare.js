@@ -3,6 +3,8 @@
 // リスト構造体を軽量化 → JSON化 → Base64(URL-safe) → URL Hash `#data=...`
 // ============================================================
 
+import { APP_BASE_PATH } from '../constants/paths.js'
+
 /** UTF-8 対応の Base64 エンコード */
 function toBase64(str) {
   // encodeURIComponent で UTF-8 バイト列化してから btoa
@@ -79,8 +81,8 @@ export function decodeChecklist(encoded) {
  */
 export function buildShareUrl(checklist) {
   const encoded = encodeChecklist(checklist)
-  const base = `${window.location.origin}${window.location.pathname}`
-  return `${base}#data=${encoded}`
+  // 末尾スラッシュなしの公開URLで統一（https://hit-tool.com/travel-checklist#data=...）
+  return `${window.location.origin}${APP_BASE_PATH}#data=${encoded}`
 }
 
 /**
@@ -97,7 +99,7 @@ export function getSharedFromUrl() {
 /** URL の Hash をクリア（履歴を汚さないよう replaceState を使用） */
 export function clearUrlHash() {
   try {
-    const url = window.location.pathname + window.location.search
+    const url = APP_BASE_PATH + window.location.search
     window.history.replaceState(null, '', url)
   } catch {
     window.location.hash = ''

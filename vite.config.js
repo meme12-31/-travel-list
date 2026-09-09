@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // アセット（JS/CSS）の相対パス解決用 — 末尾スラッシュ付き
   base: '/travel-checklist/',
   plugins: [react(), tailwindcss()],
 })

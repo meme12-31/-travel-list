@@ -8,7 +8,7 @@ export const VITE_BASE = import.meta.env.BASE_URL
 
 /**
  * アプリの公開パス（末尾スラッシュなし）
- * React Router を使う場合は <BrowserRouter basename={APP_BASE_PATH}> に設定
+ * 共有URL生成など本番パスが必要な箇所で使用
  */
 export const APP_BASE_PATH = '/travel-checklist'
 
@@ -18,9 +18,15 @@ export function publicAssetUrl(filename) {
   return `${base}${filename.replace(/^\//, '')}`
 }
 
-/** React Router の basename（サブディレクトリ / ローカル両対応） */
+/** React Router の basename（Vite base と整合） */
 export function getRouterBasename() {
+  const fromVite = import.meta.env.BASE_URL
+  if (fromVite && fromVite !== '/') {
+    return fromVite.replace(/\/$/, '')
+  }
+
   if (typeof window === 'undefined') return ''
+
   const { pathname } = window.location
   if (pathname === APP_BASE_PATH || pathname.startsWith(`${APP_BASE_PATH}/`)) {
     return APP_BASE_PATH

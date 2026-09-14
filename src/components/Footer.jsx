@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom'
-
 const navItems = [
-  { label: '運営者情報', to: '/about' },
-  { label: 'プライバシーポリシー', to: '/privacy' },
-  { label: 'お問い合わせ', to: '/contact' },
+  { label: '運営者情報', href: 'https://www.hit-tool.com/about' },
+  { label: 'プライバシーポリシー', href: 'https://www.hit-tool.com/privacy' },
+  { label: 'お問い合わせ', href: 'https://www.hit-tool.com/contact' },
 ]
 
 export default function Footer() {
@@ -19,13 +17,13 @@ export default function Footer() {
           className="mt-4 flex flex-col items-center gap-1 sm:mt-5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-1 sm:gap-y-2"
         >
           {navItems.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
+            <a
+              key={item.href}
+              href={item.href}
               className="inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-white/80 hover:text-sky-600 active:scale-[0.98]"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 

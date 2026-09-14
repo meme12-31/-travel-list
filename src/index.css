@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   持ち物チェックリストチェッカー — グローバルスタイル
+   持ち物リストチェッカー — グローバルスタイル
    パステル調・ポップで可愛いトーン / モバイルファースト
    ============================================================ */
 
@@ -107,4 +107,51 @@ body {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* お役立ちコラム本文 */
+.article-body {
+  text-align: left;
+  color: #4a4a55;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.article-body h2 {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.article-body h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.article-body p {
+  margin: 0.75rem 0;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+}
+
+.article-body li {
+  margin: 0.35rem 0;
+}
+
+.article-body strong {
+  color: #0ea5e9;
+  font-weight: 700;
+}
+
+.article-body a {
+  color: #ec4899;
+  text-decoration: underline;
 }

@@ -18,7 +18,7 @@ export default function TemplateSelector({ onSelect, onOpenMyList, savedCount })
         <span className="text-5xl" aria-hidden="true">
           🧳
         </span>
-        <h2 className="text-xl font-bold text-slate-700">持ち物チェックリストチェッカー</h2>
+        <h1 className="text-xl font-bold text-slate-700">持ち物リストチェッカー</h1>
         <p className="max-w-md text-sm text-slate-500">
           旅行・お出かけ・イベントの持ち物を、テンプレートから
           <br className="hidden sm:block" />

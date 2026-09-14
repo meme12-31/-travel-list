@@ -1,4 +1,5 @@
-import { ArrowLeft, FolderOpen, Luggage } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowLeft, BookOpen, FolderOpen, Luggage } from 'lucide-react'
 
 /**
  * アプリヘッダー・ナビゲーション
@@ -38,20 +39,30 @@ export default function Header({ view, savedCount, onHome, onOpenMyList }) {
           </button>
         )}
 
-        <button
-          type="button"
-          onClick={onOpenMyList}
-          className="relative flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-emerald-600 transition hover:bg-emerald-50 active:scale-95"
-          aria-label="保存済みマイリストを開く"
-        >
-          <FolderOpen size={18} />
-          <span className="hidden sm:inline">マイリスト</span>
-          {savedCount > 0 && (
-            <span className="ml-0.5 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] leading-none text-white">
-              {savedCount}
-            </span>
-          )}
-        </button>
+        <div className="flex items-center gap-1">
+          <Link
+            to="/articles"
+            className="flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-semibold text-pink-600 transition hover:bg-pink-50 active:scale-95"
+            aria-label="お役立ちコラム"
+          >
+            <BookOpen size={18} />
+            <span className="hidden sm:inline">コラム</span>
+          </Link>
+          <button
+            type="button"
+            onClick={onOpenMyList}
+            className="relative flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-semibold text-emerald-600 transition hover:bg-emerald-50 active:scale-95"
+            aria-label="保存済みマイリストを開く"
+          >
+            <FolderOpen size={18} />
+            <span className="hidden sm:inline">マイリスト</span>
+            {savedCount > 0 && (
+              <span className="ml-0.5 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] leading-none text-white">
+                {savedCount}
+              </span>
+            )}
+          </button>
+        </div>
       </div>
     </header>
   )

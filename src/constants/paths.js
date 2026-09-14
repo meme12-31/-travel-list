@@ -17,3 +17,21 @@ export function publicAssetUrl(filename) {
   const base = VITE_BASE.endsWith('/') ? VITE_BASE : `${VITE_BASE}/`
   return `${base}${filename.replace(/^\//, '')}`
 }
+
+/** React Router の basename（サブディレクトリ / ローカル両対応） */
+export function getRouterBasename() {
+  if (typeof window === 'undefined') return ''
+  const { pathname } = window.location
+  if (pathname === APP_BASE_PATH || pathname.startsWith(`${APP_BASE_PATH}/`)) {
+    return APP_BASE_PATH
+  }
+  return ''
+}
+
+/** コラムからチェックリストTOP（テンプレート選択）へ戻るときの Router state */
+export const TOOL_HOME_NAV_STATE = { showToolTop: true }
+
+/** `<Link {...toolHomeLinkProps()}>` 用（basename 配下の `/` = ツールTOP） */
+export function toolHomeLinkProps() {
+  return { to: '/', state: TOOL_HOME_NAV_STATE }
+}

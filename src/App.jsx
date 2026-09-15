@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { getRouterBasename } from './constants/paths'
+import { APP_BASE_PATH } from './constants/paths'
 import ScrollToTop from './components/ScrollToTop'
 import SiteLayout from './layouts/SiteLayout'
 import ChecklistApp from './ChecklistApp'
@@ -12,7 +12,7 @@ import TermsPage from './pages/TermsPage'
 
 export default function App() {
   return (
-    <BrowserRouter basename={getRouterBasename()}>
+    <BrowserRouter basename={APP_BASE_PATH}>
       <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>

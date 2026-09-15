@@ -4,34 +4,24 @@
 // ============================================================
 
 /** Vite base（末尾スラッシュ付き — import.meta.env.BASE_URL と同等） */
-export const VITE_BASE = import.meta.env.BASE_URL
+export const VITE_BASE = import.meta.env.BASE_URL || '/travel-checklist/'
 
 /**
  * アプリの公開パス（末尾スラッシュなし）
- * 共有URL生成など本番パスが必要な箇所で使用
+ * React Router の basename / 共有URL で使用
  */
 export const APP_BASE_PATH = '/travel-checklist'
 
 /** public/ 配下の静的アセットURLを生成（例: favicon.svg → /travel-checklist/favicon.svg） */
 export function publicAssetUrl(filename) {
-  const base = VITE_BASE.endsWith('/') ? VITE_BASE : `${VITE_BASE}/`
+  const raw = VITE_BASE || `${APP_BASE_PATH}/`
+  const base = raw.endsWith('/') ? raw : `${raw}/`
   return `${base}${filename.replace(/^\//, '')}`
 }
 
-/** React Router の basename（Vite base と整合） */
+/** React Router の basename。常に /travel-checklist を返す */
 export function getRouterBasename() {
-  const fromVite = import.meta.env.BASE_URL
-  if (fromVite && fromVite !== '/') {
-    return fromVite.replace(/\/$/, '')
-  }
-
-  if (typeof window === 'undefined') return ''
-
-  const { pathname } = window.location
-  if (pathname === APP_BASE_PATH || pathname.startsWith(`${APP_BASE_PATH}/`)) {
-    return APP_BASE_PATH
-  }
-  return ''
+  return APP_BASE_PATH
 }
 
 /** コラムからチェックリストTOP（テンプレート選択）へ戻るときの Router state */

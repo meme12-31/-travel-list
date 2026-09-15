@@ -1,7 +1,30 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/travel-checklist/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
-      "source": "/((?!assets/|favicon\\.svg|.*\\.(js|css|svg|png|jpg|jpeg|webp|ico|woff2?)$).*)",
+      "source": "/travel-checklist/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/travel-checklist/favicon.svg",
+      "destination": "/favicon.svg"
+    },
+    {
+      "source": "/travel-checklist",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/travel-checklist/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/travel-checklist/:path*",
       "destination": "/index.html"
     }
   ]

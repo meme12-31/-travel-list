@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/travel-checklist/',
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
+  base: '/travel-checklist/', // ←これを追加
 })
+
